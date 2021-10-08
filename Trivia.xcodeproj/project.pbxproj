@@ -11,6 +11,8 @@
 		D9AD021E270F3212006D0E66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD021D270F3212006D0E66 /* ContentView.swift */; };
 		D9AD0220270F3226006D0E66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AD021F270F3226006D0E66 /* Assets.xcassets */; };
 		D9AD0223270F3226006D0E66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AD0222270F3226006D0E66 /* Preview Assets.xcassets */; };
+		D9AD022D270F32C2006D0E66 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD022C270F32C2006D0E66 /* APIConstants.swift */; };
+		D9AD0236270F3414006D0E66 /* Trivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD0235270F3414006D0E66 /* Trivia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		D9AD021D270F3212006D0E66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9AD021F270F3226006D0E66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9AD0222270F3226006D0E66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D9AD022C270F32C2006D0E66 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		D9AD0235270F3414006D0E66 /* Trivia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		D9AD021A270F3212006D0E66 /* Trivia */ = {
 			isa = PBXGroup;
 			children = (
+				D9AD022E270F3382006D0E66 /* Feature */,
+				D9AD022A270F32A0006D0E66 /* Constants */,
 				D9AD021B270F3212006D0E66 /* TriviaApp.swift */,
 				D9AD021D270F3212006D0E66 /* ContentView.swift */,
 				D9AD021F270F3226006D0E66 /* Assets.xcassets */,
@@ -65,6 +71,70 @@
 				D9AD0222270F3226006D0E66 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D9AD022A270F32A0006D0E66 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D9AD022C270F32C2006D0E66 /* APIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		D9AD022E270F3382006D0E66 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				D9AD022F270F3392006D0E66 /* TrivaQuestions */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		D9AD022F270F3392006D0E66 /* TrivaQuestions */ = {
+			isa = PBXGroup;
+			children = (
+				D9AD0234270F33E4006D0E66 /* Views */,
+				D9AD0233270F33DF006D0E66 /* Screen */,
+				D9AD0232270F33D1006D0E66 /* TriviaService */,
+				D9AD0231270F33B9006D0E66 /* Model */,
+				D9AD0230270F33B3006D0E66 /* ViewModel */,
+			);
+			path = TrivaQuestions;
+			sourceTree = "<group>";
+		};
+		D9AD0230270F33B3006D0E66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D9AD0231270F33B9006D0E66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9AD0235270F3414006D0E66 /* Trivia.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D9AD0232270F33D1006D0E66 /* TriviaService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TriviaService;
+			sourceTree = "<group>";
+		};
+		D9AD0233270F33DF006D0E66 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		D9AD0234270F33E4006D0E66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +209,8 @@
 			files = (
 				D9AD021E270F3212006D0E66 /* ContentView.swift in Sources */,
 				D9AD021C270F3212006D0E66 /* TriviaApp.swift in Sources */,
+				D9AD0236270F3414006D0E66 /* Trivia.swift in Sources */,
+				D9AD022D270F32C2006D0E66 /* APIConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ import Foundation
 
 protocol TriviaViewModel: ObservableObject {
 
-    func getCharacters() async
+    func getTrivia() async
     
 }
 
@@ -26,9 +26,9 @@ final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
         self.service = service
     }
     
-    func getCharacters() async {
+    func getTrivia() async {
         do {
-            self.characters = try await service.fetchTrivia()
+            self.trivia = try await service.fetchTrivia()
         } catch {
             print(error)
         }

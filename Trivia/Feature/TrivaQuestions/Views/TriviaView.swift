@@ -7,33 +7,37 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TriviaView: View {
+    
+    let trivia: Trivia
     
     @State private var answers: [String] = []
     
     var body: some View {
         VStack {
-            Text(Trivia.dummyTrivia.first!.category)
+            Text(trivia.category)
                 .font(.title2)
-            Text("Difficulty: \(Trivia.dummyTrivia.first!.difficulty)")
+            Text("Difficulty: \(trivia.difficulty)")
                 .font(.title3)
                 .padding(.vertical)
-            Text(Trivia.dummyTrivia.first!.question)
+            Text(trivia.question)
                 .padding([.leading, .bottom, .trailing])
+            
+            
             
         }
     }
     func shuffleAnswers() {
-        let correct: String = Trivia.dummyTrivia.first!.correct_answer
-        let incorrect: [String] = Trivia.dummyTrivia.first!.incorrect_answers
+        let correct: String = trivia.correct_answer
+        let incorrect: [String] = trivia.incorrect_answers
         answers.append(contentsOf: incorrect)
         answers.append(correct)
         answers.shuffle()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TriviaView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TriviaView(trivia: Trivia.dummyTrivia.first!)
     }
 }

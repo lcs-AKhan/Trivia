@@ -28,7 +28,7 @@ final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     
     func getCharacters() async {
         do {
-            self.characters = try await service.fetchCharacters()
+            self.characters = try await service.fetchTrivia()
         } catch {
             print(error)
         }

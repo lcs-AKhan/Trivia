@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIConstants {
-    static let baseUrl = "https://opentdb.com"
+    static let baseURL = "https://opentdb.com"
 }
 
 // Add /api.php?amount=1

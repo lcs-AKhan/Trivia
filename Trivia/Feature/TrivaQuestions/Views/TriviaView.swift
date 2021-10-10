@@ -1,20 +1,15 @@
 //
-//  TriviaScreen.swift
+//  ContentView.swift
 //  Trivia
 //
-//  Created by Abdul Ahad Khan on 2021-10-10.
+//  Created by Abdul Ahad Khan on 2021-10-07.
 //
 
 import SwiftUI
 
-struct TriviaScreen: View {
+struct ContentView: View {
     
     @State private var answers: [String] = []
-    
-    @State private var scoreTitle: String = ""
-    
-    @State private var correctAnswer = Int.random(in: 0...2)
-    
     
     var body: some View {
         VStack {
@@ -26,14 +21,6 @@ struct TriviaScreen: View {
             Text(Trivia.dummyTrivia.first!.question)
                 .padding([.leading, .bottom, .trailing])
             
-            ForEach(0 ..< 3) { answer in
-                Button(action: {
-                    checkForAnswer(answer)
-                }) {
-                    Text(self.answers[answer])
-                }
-            }
-            
         }
     }
     func shuffleAnswers() {
@@ -43,17 +30,10 @@ struct TriviaScreen: View {
         answers.append(correct)
         answers.shuffle()
     }
-    func checkForAnswer(_ answer: Int) {
-        if answer == correctAnswer {
-            scoreTitle = "Correct!"
-        } else {
-            scoreTitle = "Incorrect!"
-        }
-    }
 }
 
-struct TriviaScreen_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaScreen()
+        ContentView()
     }
 }

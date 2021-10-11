@@ -15,6 +15,7 @@ struct TriviaView: View {
     
     var body: some View {
         VStack {
+            
             Text(trivia.category)
                 .font(.title2)
             Text("Difficulty: \(trivia.difficulty)")

@@ -91,8 +91,8 @@
 		D9AD022A270F32A0006D0E66 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				D91AC97E271382E90077CDD0 /* Views */,
 				D9AD022C270F32C2006D0E66 /* APIConstants.swift */,
+				D91AC97E271382E90077CDD0 /* Views */,
 			);
 			path = Constants;
 			sourceTree = "<group>";

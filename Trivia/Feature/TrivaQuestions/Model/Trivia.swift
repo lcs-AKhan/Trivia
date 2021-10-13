@@ -19,14 +19,13 @@ struct Trivia: Decodable {
 }
 
 extension Trivia {
-    static let dummyTrivia: [Trivia] = [
+    static let dummyTrivia: Trivia =
         Trivia(category: "Entertainment: Board Games",
                type: "Multiple",
                difficulty: "Medium",
                question: "What special item did the creators of Cards Against Humanity ship for their Black Friday pack?",
                correct_answer: "Bull Feces",
                incorrect_answers: ["A Card Expansion","A Racist Toy","Cat Urine"])
-    ]
 }
 
 

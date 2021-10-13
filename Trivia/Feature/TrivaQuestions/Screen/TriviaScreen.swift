@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TriviaScreen: View {
     
-//    @StateObject private var vm = TriviaViewModelImpl(
-//        service: TriviaServiceImpl()
-//    )
+    @StateObject private var vm = TriviaViewModelImpl(
+        service: TriviaServiceImpl()
+    )
     
     var body: some View {
         
@@ -22,17 +22,16 @@ struct TriviaScreen: View {
 //            if vm.trivia.isEmpty {
 //                LoadingView(text: "Fetching Trivia")
 //            } else {
-//
-//
-//
+        
+//                TriviaView(trivia: vm.trivia)
+
 //            }
 //
 //        }
 //        .task {
-//            // Wait for the quotes to be retrieved from the API
 //            await vm.getTrivia()
 //        }
-//
+
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct TriviaApp: App {
     var body: some Scene {
         WindowGroup {
-            TriviaView(trivia: Trivia.dummyTrivia.first!)
+            TriviaView(trivia: Trivia.dummyTrivia)
         }
     }
 }

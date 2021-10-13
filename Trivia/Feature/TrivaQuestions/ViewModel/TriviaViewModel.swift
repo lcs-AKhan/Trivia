@@ -14,7 +14,7 @@ protocol TriviaViewModel: ObservableObject {
 @MainActor
 final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     
-    @Published private(set) var trivia: [Trivia] = []
+    @Published private(set) var trivia: Trivia = Trivia.dummyTrivia
     
     private let service: TriviaService
     

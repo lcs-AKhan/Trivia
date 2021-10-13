@@ -11,29 +11,101 @@ struct TriviaView: View {
     
     let trivia: Trivia
     
+    @State private var isCorrect = false
+    
+    @State private var scoreMessage = ""
+    
+    @State private var gameEnded = false
+    
     @State private var answers: [String] = []
     
     var body: some View {
-        VStack {
-            
-            Text(trivia.category)
-                .font(.title2)
-            Text("Difficulty: \(trivia.difficulty)")
-                .font(.title3)
-                .padding(.vertical)
-            Text(trivia.question)
-                .padding([.leading, .bottom, .trailing])
-            
-            ForEach(answers, id: \.self) { answer in
-                Button(action: {
-                    // Check if answer is correct
-                }) {
-                    Text(answer)
+        
+        ZStack {
+            Color.orange
+                .ignoresSafeArea()
+            VStack {
+                
+                Text(trivia.category)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .font(.title2)
+                    .frame(width: 400, height: 50)
+                    .border(Color.blue, width: 5)
+                
+                VStack {
+                    Text("Difficulty: \(trivia.difficulty)")
+                            .font(.title3)
+                            .padding(.vertical)
+                            .foregroundColor(.black)
+                        
+                    Text(trivia.question)
+                            .padding([.leading, .bottom, .trailing])
+                            .foregroundColor(.black)
+                } .background(Color.white)
+                    .cornerRadius(40)
+                    .edgesIgnoringSafeArea([.trailing, .leading])
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 40)
+                                .stroke(Color.white, lineWidth: 5)
+                        )
+                
+                
+                ForEach(answers, id: \.self) { answer in
+                    Button(action: {
+                        if answer == trivia.correct_answer {
+                            isCorrect = true
+                            scoreMessage = "Correct!"
+                            gameEnded = true
+                        } else {
+                            isCorrect = false
+                            scoreMessage = "Incorrect!"
+                            gameEnded = true
+                        }
+                    }) {
+                        Text(answer)
+                            .fontWeight(.bold)
+                                .font(.title3)
+                                .padding()
+                                .background(Color.purple)
+                                .cornerRadius(40)
+                                .foregroundColor(.white)
+                                .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .stroke(Color.purple, lineWidth: 5)
+                                    )
+                    }
+                    .padding(.vertical)
+                }
+                if gameEnded {
+                    switch isCorrect {
+                    case true:
+                        Text(scoreMessage)
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(width: 140, height: 50)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.green, lineWidth: 5)
+                                )
+                        
+                    default:
+                        Text(scoreMessage)
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(width: 140, height: 50)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(Color.red, lineWidth: 5)
+                                )
+                    }
                 }
             }
-        }
-        .task {
-            shuffleAnswers()
+            .task {
+                shuffleAnswers()
+            }
         }
     }
     func shuffleAnswers() {
@@ -48,6 +120,6 @@ struct TriviaView: View {
 
 struct TriviaView_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaView(trivia: Trivia.dummyTrivia.first!)
+        TriviaView(trivia: Trivia.dummyTrivia)
     }
 }

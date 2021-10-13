@@ -24,11 +24,20 @@ struct TriviaView: View {
             Text(trivia.question)
                 .padding([.leading, .bottom, .trailing])
             
-            
-            
+            ForEach(answers, id: \.self) { answer in
+                Button(action: {
+                    // Check if answer is correct
+                }) {
+                    Text(answer)
+                }
+            }
+        }
+        .task {
+            shuffleAnswers()
         }
     }
     func shuffleAnswers() {
+        answers = []
         let correct: String = trivia.correct_answer
         let incorrect: [String] = trivia.incorrect_answers
         answers.append(contentsOf: incorrect)

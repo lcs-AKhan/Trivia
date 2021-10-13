@@ -8,9 +8,7 @@
 import Foundation
 
 protocol TriviaViewModel: ObservableObject {
-
     func getTrivia() async
-    
 }
 
 @MainActor
@@ -20,8 +18,6 @@ final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     
     private let service: TriviaService
     
-    // Inject the service object into this class
-    // This class can share the instance with other classes
     init(service: TriviaService) {
         self.service = service
     }

@@ -14,7 +14,7 @@ protocol TriviaViewModel: ObservableObject {
 @MainActor
 final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     
-    @Published private(set) var trivia: Trivia = Trivia.dummyTrivia
+    @Published private(set) var trivia: [TriviaResponse] = []
     
     private let service: TriviaService
     
@@ -24,7 +24,8 @@ final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     
     func getTrivia() async {
         do {
-            self.trivia = try await service.fetchTrivia()
+            let newTrivia = try await service.fetchTrivia()
+            trivia.append(newTrivia)
         } catch {
             print(error)
         }

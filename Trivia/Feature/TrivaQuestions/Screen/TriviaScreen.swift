@@ -14,23 +14,21 @@ struct TriviaScreen: View {
     )
     
     var body: some View {
-        
-        Text("hello world")
-        
-//        Group {
-//
-//            if vm.trivia.isEmpty {
-//                LoadingView(text: "Fetching Trivia")
-//            } else {
-        
-//                TriviaView(trivia: vm.trivia)
+                
+        VStack {
+            if vm.trivia.isEmpty {
+                
+                LoadingView(text: "Fetching Trivia")
+                
+            } else {
+                
+                TriviaView(trivia: vm.trivia.last!.results.last!)
 
-//            }
-//
-//        }
-//        .task {
-//            await vm.getTrivia()
-//        }
+            }
+
+        } .task {
+            await vm.getTrivia()
+        }
 
     }
 }

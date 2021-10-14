@@ -120,6 +120,6 @@ struct TriviaView: View {
 
 struct TriviaView_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaView(trivia: Trivia.dummyTrivia)
+        TriviaView(trivia: TriviaResponse.dummyTrivia.last!.results.last!)
     }
 }

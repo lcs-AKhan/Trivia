@@ -12,7 +12,7 @@ struct TriviaScreen: View {
     @StateObject private var vm = TriviaViewModelImpl(
         service: TriviaServiceImpl()
     )
-    
+        
     var body: some View {
                 
         VStack {
@@ -22,14 +22,15 @@ struct TriviaScreen: View {
                 
             } else {
                 
+                
                 TriviaView(trivia: vm.trivia.last!.results.last!)
-
+                
+                
             }
 
         } .task {
             await vm.getTrivia()
         }
-
     }
 }
 

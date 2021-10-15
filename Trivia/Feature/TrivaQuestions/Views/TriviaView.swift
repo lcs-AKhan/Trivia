@@ -16,7 +16,7 @@ struct TriviaView: View {
     @State private var scoreMessage = ""
     
     @State private var gameEnded = false
-    
+            
     @State private var answers: [String] = []
     
     var body: some View {
@@ -30,7 +30,7 @@ struct TriviaView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .font(.title2)
-                    .frame(width: 400, height: 50)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                     .border(Color.blue, width: 5)
                 
                 VStack {
@@ -101,12 +101,21 @@ struct TriviaView: View {
                                         .stroke(Color.red, lineWidth: 5)
                                 )
                     }
+//                    Button(action: {
+//                        // Get new trivia
+//                    }) {
+//                        Text("Next Question")
+//                            .font(.title2)
+//                            .fontWeight(.heavy)
+//                            .foregroundColor(.blue)
+//                    }
                 }
             }
             .task {
                 shuffleAnswers()
             }
         }
+        .frame(maxHeight: .infinity)
     }
     func shuffleAnswers() {
         answers = []

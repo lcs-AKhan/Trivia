@@ -23,6 +23,8 @@ final class TriviaViewModelImpl: TriviaViewModel, ObservableObject {
     }
     
     func getTrivia() async {
+        // Reset data
+        trivia = []
         do {
             let newTrivia = try await service.fetchTrivia()
             trivia.append(newTrivia)

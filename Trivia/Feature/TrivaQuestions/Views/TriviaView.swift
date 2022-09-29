@@ -19,11 +19,11 @@ struct TriviaView: View {
             
     @State private var answers: [String] = []
     
+    let callback: () async -> ()
+    
     var body: some View {
         
         ZStack {
-            Color.orange
-                .ignoresSafeArea()
             VStack {
                 
                 Text(trivia.category)
@@ -101,21 +101,27 @@ struct TriviaView: View {
                                         .stroke(Color.red, lineWidth: 5)
                                 )
                     }
-//                    Button(action: {
-//                        // Get new trivia
-//                    }) {
-//                        Text("Next Question")
-//                            .font(.title2)
-//                            .fontWeight(.heavy)
-//                            .foregroundColor(.blue)
-//                    }
+                    
+                    Button(action: {
+                        Task {
+                            await callback()
+                        }
+                    }) {
+                        Text("Next Question")
+                            .font(.title2)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.blue)
+                            .padding(.top)
+                    }
                 }
             }
             .task {
                 shuffleAnswers()
+                
             }
         }
         .frame(maxHeight: .infinity)
+        .background(Image("OrangeBackground"))
     }
     func shuffleAnswers() {
         answers = []
@@ -126,9 +132,10 @@ struct TriviaView: View {
         answers.shuffle()
     }
 }
-
+/*
 struct TriviaView_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaView(trivia: TriviaResponse.dummyTrivia.last!.results.last!)
+        TriviaView(trivia: TriviaResponse.dummyTrivia.last!.results.last!, callback:)
     }
 }
+*/

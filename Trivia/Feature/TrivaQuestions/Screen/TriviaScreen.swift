@@ -23,7 +23,7 @@ struct TriviaScreen: View {
             } else {
                 
                 
-                TriviaView(trivia: vm.trivia.last!.results.last!)
+                TriviaView(trivia: vm.trivia.last!.results.last!, callback: vm.getTrivia)
                 
                 
             }

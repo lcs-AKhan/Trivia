@@ -10,7 +10,7 @@ import Foundation
 struct TriviaResponse: Decodable {
     
     let response_code: Int
-    let results: [Trivia]
+    var results: [Trivia]
 }
 
 struct Trivia: Decodable {
@@ -18,7 +18,7 @@ struct Trivia: Decodable {
     let category: String
     let type: String
     let difficulty: String
-    let question: String
+    var question: String
     let correct_answer: String
     let incorrect_answers: [String]
     

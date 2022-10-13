@@ -76,6 +76,7 @@ struct TriviaView: View {
                                     )
                     }
                     .padding(.vertical)
+                    .disabled(gameEnded)
                 }
                 if gameEnded {
                     switch isCorrect {

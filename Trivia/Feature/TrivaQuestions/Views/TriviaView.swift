@@ -16,6 +16,10 @@ struct TriviaView: View {
     @State private var scoreMessage = ""
     
     @State private var gameEnded = false
+    
+    @State private var currentAnswer = ""
+    
+    @State private var scoreInt = 0
             
     @State private var answers: [String] = []
     
@@ -52,31 +56,76 @@ struct TriviaView: View {
                 
                 
                 ForEach(answers, id: \.self) { answer in
-                    Button(action: {
-                        if answer == trivia.correct_answer {
-                            isCorrect = true
-                            scoreMessage = "Correct!"
-                            gameEnded = true
-                        } else {
-                            isCorrect = false
-                            scoreMessage = "Incorrect!"
-                            gameEnded = true
+                    if gameEnded == false {
+                        Button(action: {
+                            if answer == trivia.correct_answer {
+                                isCorrect = true
+                                scoreMessage = "Correct!"
+                                gameEnded = true
+                                scoreInt += 1
+                            } else {
+                                isCorrect = false
+                                scoreMessage = "Incorrect!"
+                                gameEnded = true
+                                scoreInt = 0
+                            }
+                            currentAnswer = answer
+                        }) {
+                            Text(answer)
+                                .fontWeight(.bold)
+                                    .font(.title3)
+                                    .padding()
+                                    .background(Color.purple)
+                                    .cornerRadius(40)
+                                    .foregroundColor(.white)
+                                    .overlay(
+                                            RoundedRectangle(cornerRadius: 40)
+                                                .stroke(Color.purple, lineWidth: 5)
+                                        )
                         }
-                    }) {
-                        Text(answer)
-                            .fontWeight(.bold)
-                                .font(.title3)
-                                .padding()
-                                .background(Color.purple)
-                                .cornerRadius(40)
-                                .foregroundColor(.white)
-                                .overlay(
-                                        RoundedRectangle(cornerRadius: 40)
-                                            .stroke(Color.purple, lineWidth: 5)
-                                    )
+                        .padding(.vertical)
+                        .disabled(gameEnded)
+                    } else {
+                        if answer == trivia.correct_answer {
+                            Text(answer)
+                                .fontWeight(.bold)
+                                    .font(.title3)
+                                    .padding()
+                                    .background(Color.purple)
+                                    .cornerRadius(40)
+                                    .foregroundColor(.white)
+                                    .overlay(
+                                            RoundedRectangle(cornerRadius: 40)
+                                                .stroke(Color.green, lineWidth: 5)
+                                        )
+                                    .padding(.vertical)
+                        } else {
+                            Text(answer)
+                                .fontWeight(.bold)
+                                    .font(.title3)
+                                    .padding()
+                                    .background(Color.purple)
+                                    .cornerRadius(40)
+                                    .foregroundColor(.white)
+                                    .overlay(
+                                            RoundedRectangle(cornerRadius: 40)
+                                                .stroke(Color.purple, lineWidth: 5)
+                                        )
+                                    .padding(.vertical)
+                        }
                     }
-                    .padding(.vertical)
-                    .disabled(gameEnded)
+                }
+                if gameEnded == false {
+                    Text("")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(width: 140, height: 50)
+//                        .overlay(
+//                                RoundedRectangle(cornerRadius: 40)
+//                                    .stroke(Color.green, lineWidth: 5)
+//                            )
+                        .padding(.all)
                 }
                 if gameEnded {
                     switch isCorrect {
@@ -115,6 +164,11 @@ struct TriviaView: View {
                             .padding(.top)
                     }
                 }
+//                Text("Score: \(scoreInt)")
+//                    .font(.title3)
+//                    .fontWeight(.heavy)
+//                    .foregroundColor(.white)
+//                    .padding(.all)
             }
             .task {
                 shuffleAnswers()

@@ -29,13 +29,14 @@ struct TriviaView: View {
         
         ZStack {
             VStack {
-                
-                Text(trivia.category)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .font(.title2)
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-                    .border(Color.blue, width: 5)
+                VStack {
+                    Text(trivia.category)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
+                        .border(Color.blue, width: 5)
+                }
                 
                 VStack {
                     Text("Difficulty: \(trivia.difficulty)")
@@ -120,36 +121,47 @@ struct TriviaView: View {
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .frame(width: 140, height: 50)
-//                        .overlay(
-//                                RoundedRectangle(cornerRadius: 40)
-//                                    .stroke(Color.green, lineWidth: 5)
-//                            )
-                        .padding(.all)
+                        .frame(width: 100, height: 40)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 40)
+                                    .stroke(Color.green, lineWidth: 5)
+                            )
+                        .padding(.top)
+                        .opacity(0)
+                    
+                    Text("Next Question")
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.blue)
+                        .padding(.top)
+                        .opacity(0)
+                    
                 }
                 if gameEnded {
                     switch isCorrect {
                     case true:
                         Text(scoreMessage)
-                            .font(.title3)
+                            .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .frame(width: 140, height: 50)
+                            .frame(width: 100, height: 40)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.green, lineWidth: 5)
                                 )
+                            .padding(.top)
                         
                     default:
                         Text(scoreMessage)
-                            .font(.title3)
+                            .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .frame(width: 140, height: 50)
+                            .frame(width: 100, height: 40)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 40)
                                         .stroke(Color.red, lineWidth: 5)
                                 )
+                            .padding(.top)
                     }
                     
                     Button(action: {

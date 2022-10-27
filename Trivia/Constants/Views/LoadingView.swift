@@ -16,13 +16,17 @@ struct LoadingView: View {
     var body: some View {
         VStack(spacing: 8) {
             ProgressView()
-            Text(text)
-        }
+            Text("Fetching Trivia")
+                .fontWeight(.bold)
+                .font(.title3)
+                .foregroundColor(.white)
+                .padding(.top)
+        } .background(Image("OrangeBackground"))
     }
 }
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView(text: "Fetching Trivia...")
-    }
-}
+//struct LoadingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoadingView(text: "Fetching Trivia...")
+//    }
+//}

@@ -70,18 +70,49 @@ struct TriviaView: View {
                                 currentAnswer = answer
                                 gameEnded = true
                             }) {
-                                Text(answer)
-                                    .fontWeight(.bold)
-                                        .font(.title3)
-                                        .padding()
-                                        .background(Color.purple)
-                                        .cornerRadius(40)
-                                        .foregroundColor(.white)
-                                        .overlay(
+                                if gameEnded == false {
+                                    Text(answer)
+                                        .fontWeight(.bold)
+                                            .font(.title3)
+                                            .padding()
+                                            .background(Color.purple)
+                                            .cornerRadius(40)
+                                            .foregroundColor(.white)
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 40)
+                                                        .stroke(Color.purple, lineWidth: 5)
+                                                )
+                                            .fixedSize(horizontal: false, vertical: true)
+                                } else {
+                                    if answer == trivia.correct_answer {
+                                        Text(answer)
+                                            .fontWeight(.bold)
+                                            .font(.title3)
+                                            .padding()
+                                            .background(Color.purple)
+                                            .cornerRadius(40)
+                                            .foregroundColor(.white)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 40)
+                                                    .stroke(Color.green, lineWidth: 5)
+                                            )
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    } else {
+                                        Text(answer)
+                                            .fontWeight(.bold)
+                                            .font(.title3)
+                                            .padding()
+                                            .background(Color.purple)
+                                            .cornerRadius(40)
+                                            .foregroundColor(.white)
+                                            .overlay(
                                                 RoundedRectangle(cornerRadius: 40)
                                                     .stroke(Color.purple, lineWidth: 5)
                                             )
-                                        .fixedSize(horizontal: false, vertical: true)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    }
+                                }
+                                
                             }
                             .confettiCannon(counter: $counter, num: 50)
                             .padding(.vertical)

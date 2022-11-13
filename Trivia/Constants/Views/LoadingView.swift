@@ -14,6 +14,9 @@ struct LoadingView: View {
     let text: String
     
     var body: some View {
+        Spacer()
+        Spacer()
+        
         VStack(spacing: 8) {
             ProgressView()
             Text("Fetching Trivia")
@@ -22,6 +25,10 @@ struct LoadingView: View {
                 .foregroundColor(.white)
                 .padding(.top)
         } .background(Image("OrangeBackground"))
+        
+        Spacer()
+        Spacer()
+        Spacer()
     }
 }
 

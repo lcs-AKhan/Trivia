@@ -1,15 +1,12 @@
-//
-//  ContentView.swift
-//  Trivia
-//
-//  Created by Abdul Ahad Khan on 2021-10-07.
-//
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct TriviaView: View {
     
     let trivia: Trivia
+    
+    @State private var counter = 0
     
     @State private var isCorrect = false
     
@@ -26,122 +23,106 @@ struct TriviaView: View {
     let callback: () async -> ()
     
     var body: some View {
-        
-        ZStack {
-            VStack {
+        ScrollView {
+            ZStack {
                 VStack {
-                    Text(trivia.category)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .frame(maxWidth: .infinity, maxHeight: 50)
-                        .border(Color.blue, width: 5)
-                }
-                
-                VStack {
-                    Text("Difficulty: \(trivia.difficulty)")
-                            .font(.title3)
-                            .padding(.vertical)
-                            .foregroundColor(.black)
+                    VStack {
                         
-                    Text(trivia.question)
-                            .padding([.leading, .bottom, .trailing])
-                            .foregroundColor(.black)
-                } .background(Color.white)
-                    .cornerRadius(40)
-                    .edgesIgnoringSafeArea([.trailing, .leading])
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 40)
-                                .stroke(Color.white, lineWidth: 5)
-                        )
-                
-                
-                ForEach(answers, id: \.self) { answer in
-                    if gameEnded == false {
-                        Button(action: {
-                            if answer == trivia.correct_answer {
-                                isCorrect = true
-                                scoreMessage = "Correct!"
-                                gameEnded = true
-                                scoreInt += 1
-                            } else {
-                                isCorrect = false
-                                scoreMessage = "Incorrect!"
-                                gameEnded = true
-                                scoreInt = 0
-                            }
-                            currentAnswer = answer
-                        }) {
-                            Text(answer)
-                                .fontWeight(.bold)
-                                    .font(.title3)
-                                    .padding()
-                                    .background(Color.purple)
-                                    .cornerRadius(40)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                            RoundedRectangle(cornerRadius: 40)
-                                                .stroke(Color.purple, lineWidth: 5)
-                                        )
-                        }
-                        .padding(.vertical)
-                        .disabled(gameEnded)
-                    } else {
-                        if answer == trivia.correct_answer {
-                            Text(answer)
-                                .fontWeight(.bold)
-                                    .font(.title3)
-                                    .padding()
-                                    .background(Color.purple)
-                                    .cornerRadius(40)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                            RoundedRectangle(cornerRadius: 40)
-                                                .stroke(Color.green, lineWidth: 5)
-                                        )
-                                    .padding(.vertical)
-                        } else {
-                            Text(answer)
-                                .fontWeight(.bold)
-                                    .font(.title3)
-                                    .padding()
-                                    .background(Color.purple)
-                                    .cornerRadius(40)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                            RoundedRectangle(cornerRadius: 40)
-                                                .stroke(Color.purple, lineWidth: 5)
-                                        )
-                                    .padding(.vertical)
-                        }
+                        Text(trivia.category)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 150)
+                            .border(Color.blue, width: 5)
+                            .padding(.horizontal)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-                }
-                if gameEnded == false {
-                    Text("")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(width: 100, height: 40)
+                    
+                    VStack {
+                        Text("Difficulty: \(trivia.difficulty)")
+                                .font(.title3)
+                                .padding(.vertical)
+                                .foregroundColor(.black)
+                            
+                        Text(trivia.question)
+                                .padding([.leading, .bottom, .trailing])
+                                .foregroundColor(.black)
+                    } .background(Color.white)
+                        .cornerRadius(40)
+                        .edgesIgnoringSafeArea([.trailing, .leading])
                         .overlay(
                                 RoundedRectangle(cornerRadius: 40)
-                                    .stroke(Color.green, lineWidth: 5)
+                                    .stroke(Color.white, lineWidth: 5)
                             )
-                        .padding(.top)
-                        .opacity(0)
+                        .fixedSize(horizontal: false, vertical: true)
                     
-                    Text("Next Question")
-                        .font(.title2)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.blue)
-                        .padding(.top)
-                        .opacity(0)
-                    
-                }
-                if gameEnded {
-                    switch isCorrect {
-                    case true:
-                        Text(scoreMessage)
-                            .font(.headline)
+                    ForEach(answers, id: \.self) { answer in
+//                        if gameEnded == false {
+                            Button(action: {
+                                if answer == trivia.correct_answer {
+                                    isCorrect = true
+                                    scoreMessage = "Correct!"
+                                    counter += 1
+                                } else {
+                                    isCorrect = false
+                                    scoreMessage = "Incorrect!"
+                                }
+                                currentAnswer = answer
+                                gameEnded = true
+                            }) {
+                                Text(answer)
+                                    .fontWeight(.bold)
+                                        .font(.title3)
+                                        .padding()
+                                        .background(Color.purple)
+                                        .cornerRadius(40)
+                                        .foregroundColor(.white)
+                                        .overlay(
+                                                RoundedRectangle(cornerRadius: 40)
+                                                    .stroke(Color.purple, lineWidth: 5)
+                                            )
+                                        .fixedSize(horizontal: false, vertical: true)
+                            }
+                            .confettiCannon(counter: $counter, num: 50)
+                            .padding(.vertical)
+                            .disabled(gameEnded)
+//                        } else {
+//                            if answer == trivia.correct_answer {
+//                                Text(answer)
+//                                    .fontWeight(.bold)
+//                                        .font(.title3)
+//                                        .padding()
+//                                        .background(Color.purple)
+//                                        .cornerRadius(40)
+//                                        .foregroundColor(.white)
+//                                        .overlay(
+//                                                RoundedRectangle(cornerRadius: 40)
+//                                                    .stroke(Color.green, lineWidth: 5)
+//                                            )
+//                                        .padding(.vertical)
+//                                        .fixedSize(horizontal: false, vertical: true)
+//                                        .frame(alignment: .center)
+//                            } else {
+//                                Text(answer)
+//                                    .fontWeight(.bold)
+//                                        .font(.title3)
+//                                        .padding()
+//                                        .background(Color.purple)
+//                                        .cornerRadius(40)
+//                                        .foregroundColor(.white)
+//                                        .overlay(
+//                                                RoundedRectangle(cornerRadius: 40)
+//                                                    .stroke(Color.purple, lineWidth: 5)
+//                                            )
+//                                        .padding(.vertical)
+//                                        .fixedSize(horizontal: false, vertical: true)
+//                                        .frame(alignment: .center)
+//                            }
+//                        }
+                    }
+                    if gameEnded == false {
+                        Text("")
+                            .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .frame(width: 100, height: 40)
@@ -150,45 +131,70 @@ struct TriviaView: View {
                                         .stroke(Color.green, lineWidth: 5)
                                 )
                             .padding(.top)
+                            .opacity(0)
                         
-                    default:
-                        Text(scoreMessage)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(width: 100, height: 40)
-                            .overlay(
-                                    RoundedRectangle(cornerRadius: 40)
-                                        .stroke(Color.red, lineWidth: 5)
-                                )
-                            .padding(.top)
-                    }
-                    
-                    Button(action: {
-                        Task {
-                            await callback()
-                        }
-                    }) {
                         Text("Next Question")
                             .font(.title2)
                             .fontWeight(.heavy)
                             .foregroundColor(.blue)
-                            .padding(.top)
+                            .padding(.vertical)
+                            .opacity(0)
+                        
                     }
+                    if gameEnded {
+                        switch isCorrect {
+                        case true:
+                            Text(scoreMessage)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 100, height: 40)
+                                .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .stroke(Color.green, lineWidth: 5)
+                                    )
+                                .padding(.top)
+                            
+                        default:
+                            Text(scoreMessage)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(width: 100, height: 40)
+                                .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .stroke(Color.red, lineWidth: 5)
+                                    )
+                                .padding(.top)
+                        }
+                        
+                        Button(action: {
+                            Task {
+                                await callback()
+                            }
+                        }) {
+                            Text("Next Question")
+                                .font(.title2)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.blue)
+                                .padding(.vertical)
+                        }
+                    }
+                    Text("")
+    //                Text("Score: \(scoreInt)")
+    //                    .font(.title3)
+    //                    .fontWeight(.heavy)
+    //                    .foregroundColor(.white)
+    //                    .padding(.all)
                 }
-//                Text("Score: \(scoreInt)")
-//                    .font(.title3)
-//                    .fontWeight(.heavy)
-//                    .foregroundColor(.white)
-//                    .padding(.all)
+                .task {
+                    shuffleAnswers()
+                    
+                }
             }
-            .task {
-                shuffleAnswers()
-                
-            }
+                .frame(maxHeight: .infinity)
+                .background(Image("OrangeBackground"))
         }
-        .frame(maxHeight: .infinity)
-        .background(Image("OrangeBackground"))
     }
     func shuffleAnswers() {
         answers = []

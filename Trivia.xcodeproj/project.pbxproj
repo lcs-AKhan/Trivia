@@ -17,6 +17,9 @@
 		D9AD0223270F3226006D0E66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AD0222270F3226006D0E66 /* Preview Assets.xcassets */; };
 		D9AD022D270F32C2006D0E66 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD022C270F32C2006D0E66 /* APIConstants.swift */; };
 		D9AD0236270F3414006D0E66 /* Trivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD0235270F3414006D0E66 /* Trivia.swift */; };
+		D9E830BB290B257500F72F5F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E830BA290B257500F72F5F /* MainMenuView.swift */; };
+		D9E830BE2914602000F72F5F /* UIScreenBoundaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E830BD2914602000F72F5F /* UIScreenBoundaries.swift */; };
+		D9E830C12920B21700F72F5F /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D9E830C02920B21700F72F5F /* ConfettiSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,8 @@
 		D9AD0222270F3226006D0E66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D9AD022C270F32C2006D0E66 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		D9AD0235270F3414006D0E66 /* Trivia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia.swift; sourceTree = "<group>"; };
+		D9E830BA290B257500F72F5F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		D9E830BD2914602000F72F5F /* UIScreenBoundaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenBoundaries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E830C12920B21700F72F5F /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,7 @@
 		D9AD022E270F3382006D0E66 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D9E830BC2914600B00F72F5F /* Helpers */,
 				D9AD022F270F3392006D0E66 /* TrivaQuestions */,
 			);
 			path = Feature;
@@ -152,9 +159,18 @@
 		D9AD0234270F33E4006D0E66 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D9E830BA290B257500F72F5F /* MainMenuView.swift */,
 				D9AD021D270F3212006D0E66 /* TriviaView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D9E830BC2914600B00F72F5F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D9E830BD2914602000F72F5F /* UIScreenBoundaries.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +189,9 @@
 			dependencies = (
 			);
 			name = Trivia;
+			packageProductDependencies = (
+				D9E830C02920B21700F72F5F /* ConfettiSwiftUI */,
+			);
 			productName = Trivia;
 			productReference = D9AD0218270F3212006D0E66 /* Trivia.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +220,9 @@
 				Base,
 			);
 			mainGroup = D9AD020F270F3212006D0E66;
+			packageReferences = (
+				D9E830BF2920B21700F72F5F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			productRefGroup = D9AD0219270F3212006D0E66 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -230,9 +252,11 @@
 				D91AC97D27137C320077CDD0 /* TriviaService.swift in Sources */,
 				D9AD021E270F3212006D0E66 /* TriviaView.swift in Sources */,
 				D9AD021C270F3212006D0E66 /* TriviaApp.swift in Sources */,
+				D9E830BB290B257500F72F5F /* MainMenuView.swift in Sources */,
 				D9AD0236270F3414006D0E66 /* Trivia.swift in Sources */,
 				D91AC97727135DE30077CDD0 /* TriviaScreen.swift in Sources */,
 				D91AC980271382FF0077CDD0 /* LoadingView.swift in Sources */,
+				D9E830BE2914602000F72F5F /* UIScreenBoundaries.swift in Sources */,
 				D9AD022D270F32C2006D0E66 /* APIConstants.swift in Sources */,
 				D91AC97B271376110077CDD0 /* TriviaViewModel.swift in Sources */,
 			);
@@ -365,7 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trivia/Preview Content\"";
-				DEVELOPMENT_TEAM = 5MJ295G5NG;
+				DEVELOPMENT_TEAM = A33JHA7SZM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -395,7 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trivia/Preview Content\"";
-				DEVELOPMENT_TEAM = 5MJ295G5NG;
+				DEVELOPMENT_TEAM = A33JHA7SZM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -439,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9E830BF2920B21700F72F5F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9E830C02920B21700F72F5F /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9E830BF2920B21700F72F5F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9AD0210270F3212006D0E66 /* Project object */;
 }

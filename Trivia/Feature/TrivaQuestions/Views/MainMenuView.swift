@@ -20,31 +20,48 @@ struct MainMenuView: View {
                     .frame(width: 500, height: 1000)
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack {
-                    
-                    Spacer()
-                    Spacer()
-                    
-                    Image("TriviaTitle")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(50)
-                    
-                    Spacer()
-                    Spacer()
-                    
-                    NavigationLink(destination: TriviaScreen()) {
-                    
-                            Image("StartButtonPink")
+                GeometryReader { geometry in
+                    VStack {
+                        
+                        Spacer()
+                        Spacer()
+                        
+//                        GeometryReader { geo in
+//                            Image("TriviaTitle")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: geo.size.width * 0.7)
+//                                .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
+//                        }
+                        
+                        Image("TriviaTitle")
                             .resizable()
                             .scaledToFit()
-                            .padding(100)
+                            .padding(10)
                         
-                        }
-                    
-                    Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        
+//                        GeometryReader { geo in
+//                            Image("StartButtonPink")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: geo.size.width * 0.6)
+//                                .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
+//                        }
+                        
+                        Image("StartButtonPink")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(50)
+                        
+                        Spacer()
 
-                    
+                        
+                    }
+                    .frame(width: geometry.size.width * 0.8, height: geometry.size.height)
+                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
                 }
             }
         }
